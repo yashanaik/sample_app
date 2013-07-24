@@ -4,7 +4,7 @@ describe User do
 
   before do
     @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+    password: "foobar", password_confirmation: "foobar")
   end
 
   subject { @user }
@@ -15,13 +15,19 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:remember_token) }
 
   it { should be_valid }
 
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
+
   describe "when name is not present" do
-  	before { @user.name = " " }
-  	it { should_not be_valid }
-  end 
+    before { @user.name = " " }
+    it { should_not be_valid }
+  end
 
   describe "email address with mixed case" do
     let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
@@ -32,16 +38,16 @@ describe User do
       expect(@user.reload.email).to eq mixed_case_email.downcase
     end
   end
-  
+
   describe "when username is too long" do
-  	before { @user.name = "a" * 51 }
-  	it { should_not be_valid }
+    before { @user.name = "a" * 51 }
+    it { should_not be_valid }
   end
 
-   describe "when email format is invalid" do
+  describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                     foo@bar_baz.com foo@bar+baz.com]
+      foo@bar_baz.com foo@bar+baz.com]
       addresses.each do |invalid_address|
         @user.email = invalid_address
         expect(@user).not_to be_valid
@@ -69,10 +75,10 @@ describe User do
     it { should_not be_valid }
   end
 
-    describe "when password is not present" do
+  describe "when password is not present" do
     before do
       @user = User.new(name: "Example User", email: "user@example.com",
-                       password: " ", password_confirmation: " ")
+      password: " ", password_confirmation: " ")
     end
     it { should_not be_valid }
   end
