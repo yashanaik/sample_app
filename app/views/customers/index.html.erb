@@ -1,0 +1,68 @@
+<% provide(:title, 'Listing customers') %>
+<h1>Listing customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Table 37 ID</th>
+      <th>Restaurant Name</th>
+      <th>Source</th>
+      <th>Start Date</th>
+      <th>Trial Period</th>
+      <th>Plan Type</th>
+      <th>Monthly Rate</th>
+      <th>Ipad Included?</th>
+      <th>Stand Included?</th>
+      <th>Ipad Charges</th>
+      <th>Stand Charges</th>
+      <th>Restaurant Owner</th>
+      <th>Restaurant Address</th>
+      <th>Restaurant City</th>
+      <th>Restaurant State</th>
+      <th>Restaurant Zip Code</th>
+      <th>Restaurant Contact</th>
+      <th>Manager Contact</th>
+      <th>Email</th>
+      <th>Pay Mmode</th>
+      <th>Sales Tax</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.rstid %></td>
+        <td><%= customer.rstname %></td>
+        <td><%= customer.source %></td>
+        <td><%= customer.sdate %></td>
+        <td><%= customer.trialdays %></td>
+        <td><%= customer.plantype %></td>
+        <td><%= customer.monthlyrate %></td>
+        <td><%= customer.ipadsold %></td>
+        <td><%= customer.standsold %></td>
+        <td><%= customer.ipadrate %></td>
+        <td><%= customer.standrate %></td>
+        <td><%= customer.rstowner %></td>
+        <td><%= customer.rstaddress %></td>
+        <td><%= customer.rstcity %></td>
+        <td><%= customer.rststate %></td>
+        <td><%= customer.rstzip %></td>
+        <td><%= customer.rstcontact %></td>
+        <td><%= customer.rstmgrcontact %></td>
+        <td><%= customer.rstemail %></td>
+        <td><%= customer.paymode %></td>
+        <td><%= customer.salestax %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>

@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724175339) do
+ActiveRecord::Schema.define(version: 20130731153359) do
+
+  create_table "customers", force: true do |t|
+    t.string   "rstid"
+    t.string   "rstname"
+    t.string   "source"
+    t.string   "sdate"
+    t.integer  "trialdays"
+    t.string   "plantype"
+    t.integer  "monthlyrate"
+    t.boolean  "ipadsold"
+    t.boolean  "standsold"
+    t.integer  "ipadrate"
+    t.integer  "standrate"
+    t.string   "rstowner"
+    t.string   "rstaddress"
+    t.string   "rstcity"
+    t.string   "rststate"
+    t.string   "rstzip"
+    t.integer  "rstcontact"
+    t.integer  "rstmgrcontact"
+    t.string   "rstemail"
+    t.string   "paymode"
+    t.integer  "salestax"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

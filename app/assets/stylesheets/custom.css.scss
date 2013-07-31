@@ -188,3 +188,17 @@ input {
     }
   }
 }
+
+
+/* Table design */
+
+table, td, th
+{
+border:1px;
+}
+th
+{
+background-color:$grayLight;
+color:white;
+letter-spacing: -1px;
+}

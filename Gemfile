@@ -8,6 +8,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '3.0.4'
 gem 'faker', '1.1.2'
+gem 'formtastic', '~> 2.2.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.7'

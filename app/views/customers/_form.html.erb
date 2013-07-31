@@ -1,0 +1,101 @@
+<%= form_for(@customer) do |f| %>
+  <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @customer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rstid %><br>
+    <%= f.text_field :rstid %>
+  </div>
+  <div class="field">
+    <%= f.label :rstname %><br>
+    <%= f.text_field :rstname %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br>
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :sdate %><br>
+    <%= f.text_field :sdate %>
+  </div>
+  <div class="field">
+    <%= f.label :trialdays %><br>
+    <%= f.number_field :trialdays %>
+  </div>
+  <div class="field">
+    <%= f.label :plantype %><br>
+    <%= f.text_field :plantype %>
+  </div>
+  <div class="field">
+    <%= f.label :monthlyrate %><br>
+    <%= f.number_field :monthlyrate %>
+  </div>
+  <div class="field">
+    <%= f.label :ipadsold %><br>
+    <%= f.check_box :ipadsold %>
+  </div>
+  <div class="field">
+    <%= f.label :standsold %><br>
+    <%= f.check_box :standsold %>
+  </div>
+  <div class="field">
+    <%= f.label :ipadrate %><br>
+    <%= f.number_field :ipadrate %>
+  </div>
+  <div class="field">
+    <%= f.label :standrate %><br>
+    <%= f.number_field :standrate %>
+  </div>
+  <div class="field">
+    <%= f.label :rstowner %><br>
+    <%= f.text_field :rstowner %>
+  </div>
+  <div class="field">
+    <%= f.label :rstaddress %><br>
+    <%= f.text_field :rstaddress %>
+  </div>
+  <div class="field">
+    <%= f.label :rstcity %><br>
+    <%= f.text_field :rstcity %>
+  </div>
+  <div class="field">
+    <%= f.label :rststate %><br>
+    <%= f.text_field :rststate %>
+  </div>
+  <div class="field">
+    <%= f.label :rstzip %><br>
+    <%= f.text_field :rstzip %>
+  </div>
+  <div class="field">
+    <%= f.label :rstcontact %><br>
+    <%= f.number_field :rstcontact %>
+  </div>
+  <div class="field">
+    <%= f.label :rstmgrcontact %><br>
+    <%= f.number_field :rstmgrcontact %>
+  </div>
+  <div class="field">
+    <%= f.label :rstemail %><br>
+    <%= f.text_field :rstemail %>
+  </div>
+  <div class="field">
+    <%= f.label :paymode %><br>
+    <%= f.text_field :paymode %>
+  </div>
+  <div class="field">
+    <%= f.label :salestax %><br>
+    <%= f.number_field :salestax %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
