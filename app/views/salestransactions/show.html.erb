@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Deal Date:</strong>
+  <%= @salestransaction.sdate %>
+</p>
+
+<p>
+  <strong>Restaurant ID:</strong>
+  <%= @salestransaction.table37id %>
+</p>
+
+<p>
+  <strong>Sales Person ID:</strong>
+  <%= @salestransaction.salesid %>
+</p>
+
+<p>
+  <strong>Sale Amount:</strong>
+  <%= @salestransaction.salesamount %>
+</p>
+
+<p>
+  <strong>Commission:</strong>
+  <%= @salestransaction.salescommission %>
+</p>
+
+<%= link_to 'Edit', edit_salestransaction_path(@salestransaction) %> |
+<%= link_to 'Back', salestransactions_path %>

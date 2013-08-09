@@ -1,101 +1,96 @@
+<div class="row">
+
+
 <%= form_for(@customer) do |f| %>
-  <% if @customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
-      <ul>
-      <% @customer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :rstid %><br>
-    <%= f.text_field :rstid %>
-  </div>
-  <div class="field">
-    <%= f.label :rstname %><br>
-    <%= f.text_field :rstname %>
-  </div>
-  <div class="field">
-    <%= f.label :source %><br>
-    <%= f.text_field :source %>
-  </div>
-  <div class="field">
-    <%= f.label :sdate %><br>
-    <%= f.text_field :sdate %>
-  </div>
-  <div class="field">
-    <%= f.label :trialdays %><br>
-    <%= f.number_field :trialdays %>
-  </div>
-  <div class="field">
-    <%= f.label :plantype %><br>
-    <%= f.text_field :plantype %>
-  </div>
-  <div class="field">
-    <%= f.label :monthlyrate %><br>
-    <%= f.number_field :monthlyrate %>
-  </div>
-  <div class="field">
-    <%= f.label :ipadsold %><br>
-    <%= f.check_box :ipadsold %>
-  </div>
-  <div class="field">
-    <%= f.label :standsold %><br>
-    <%= f.check_box :standsold %>
-  </div>
-  <div class="field">
-    <%= f.label :ipadrate %><br>
-    <%= f.number_field :ipadrate %>
-  </div>
-  <div class="field">
-    <%= f.label :standrate %><br>
-    <%= f.number_field :standrate %>
-  </div>
-  <div class="field">
-    <%= f.label :rstowner %><br>
-    <%= f.text_field :rstowner %>
-  </div>
-  <div class="field">
-    <%= f.label :rstaddress %><br>
-    <%= f.text_field :rstaddress %>
-  </div>
-  <div class="field">
-    <%= f.label :rstcity %><br>
-    <%= f.text_field :rstcity %>
-  </div>
-  <div class="field">
-    <%= f.label :rststate %><br>
-    <%= f.text_field :rststate %>
-  </div>
-  <div class="field">
-    <%= f.label :rstzip %><br>
-    <%= f.text_field :rstzip %>
-  </div>
-  <div class="field">
-    <%= f.label :rstcontact %><br>
-    <%= f.number_field :rstcontact %>
-  </div>
-  <div class="field">
-    <%= f.label :rstmgrcontact %><br>
-    <%= f.number_field :rstmgrcontact %>
-  </div>
-  <div class="field">
-    <%= f.label :rstemail %><br>
-    <%= f.text_field :rstemail %>
-  </div>
-  <div class="field">
-    <%= f.label :paymode %><br>
-    <%= f.text_field :paymode %>
-  </div>
-  <div class="field">
-    <%= f.label :salestax %><br>
-    <%= f.number_field :salestax %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @customer.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+  <ul>
+    <% @customer.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
+
+    <%= f.label :rstid, 'Table37 ID*' %>
+    <%= f.text_field :rstid %>
+    
+    <%= f.label :rstname, 'Restaurant Name*' %>
+    <%= f.text_field :rstname %>
+    
+    <%= f.label :source, 'Sales Person 1*' %>
+    <%= f.collection_select :source, Sale.find(:all), :id, :spname, :prompt => "Please select" %>  
+
+    <%= f.label :source2, 'Sales Person 2*' %>
+    <%= f.collection_select :source2, Sale.find(:all), :id, :spname, :prompt => "Please select" %>  
+
+    <%= f.label :commission1, 'Commission Sales Person 1*' %>
+    <%= f.number_field :commission1 %> 
+
+    <%= f.label :commission2, 'Commission Sales Person 2' %>
+    <%= f.number_field :commission2 %>   
+       
+    <%= f.label :sdate, 'Contract Start Date (DD/MM/YYYY)' %>
+    <%= f.text_field :sdate %>
+    
+    <%= f.label :trialdays, 'Free Trial (in Days)' %>
+    <%= f.number_field :trialdays %>
+   
+    <%= f.label :plantype, 'Plan Type' %>
+    <%= f.select :plantype, options_for_select(["Free", "Free Plus", "Waitlist", "Reservation", "Waitlist + Reservation","Full"]) , :prompt => "Please select"%>
+   
+    <%= f.label :monthlyrate, 'Plan Pricing' %>
+    <%= f.number_field :monthlyrate %>
+
+    <%= f.label :payfreq, 'Payment Frequency' %>
+    <%= f.number_field :payfreq %>
+
+    <%= f.label :paymode, 'Payment Mode' %>
+    <%= f.select :paymode, options_for_select(["PayPal","Check"]), :prompt => "Please select" %>
+
+    <%= f.label :ipadsold, 'IPad Included?' %>
+    <%= f.check_box :ipadsold %>
+
+    <%= f.label :ipadserialno, 'IPad Serial Number' %>
+    <%= f.text_field :ipadserialno %>
+    
+    <%= f.label :ipadrate, 'IPad Price' %>
+    <%= f.number_field :ipadrate %>
+    
+    <%= f.label :standsold, 'Stand Included?' %>
+    <%= f.check_box :standsold %>
+    
+    <%= f.label :standrate, 'Stand Price' %>
+    <%= f.number_field :standrate %>
+    
+    <%= f.label :rstowner, 'Owner Name' %>
+    <%= f.text_field :rstowner %>
+    
+    <%= f.label :rstaddress, 'Address' %>
+    <%= f.text_field :rstaddress %>
+    
+    <%= f.label :rstcity, 'City' %>
+    <%= f.collection_select :rstcity, City.find(:all), :id, :cityname, :prompt => "Please select" %>  
+    
+    <%= f.label :rststate, 'State' %>
+    <%= f.collection_select :rststate, State.find(:all), :id, :statename, :prompt => "Please select" %> 
+
+    <%= f.label :rstzip, 'Zip Code' %>
+    <%= f.text_field :rstzip %>
+   
+    <%= f.label :rstcontact, 'Restaurant Contact' %>
+    <%= f.number_field :rstcontact %>
+    
+    <%= f.label :rstmgrcontact, 'Manager Contact' %>
+    <%= f.number_field :rstmgrcontact %>
+    
+    <%= f.label :rstemail,'Email' %>
+    <%= f.text_field :rstemail %>
+    
+    <%= f.label :salestax, 'Sales Tax' %>
+    <%= f.number_field :salestax %>
+
+    <%= f.submit  "Save changes", class: "btn btn-large btn-primary"%>
+    <% end %>
+  </div>

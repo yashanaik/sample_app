@@ -1,0 +1,37 @@
+<%= form_for(@salestransaction) do |f| %>
+  <% if @salestransaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@salestransaction.errors.count, "error") %> prohibited this salestransaction from being saved:</h2>
+
+      <ul>
+      <% @salestransaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sdate, "Deal Date" %><br>
+    <%= f.text_field :sdate %>
+  </div>
+  <div class="field">
+    <%= f.label :table37id, "Restaurant ID" %><br>
+    <%= f.text_field :table37id %>
+  </div>
+  <div class="field">
+    <%= f.label :salesid, "Sales Person ID" %><br>
+    <%= f.text_field :salesid %>
+  </div>
+  <div class="field">
+    <%= f.label :salesamount, "Sale Amount" %><br>
+    <%= f.number_field :salesamount %>
+  </div>
+  <div class="field">
+    <%= f.label :salescommission, "Commission" %><br>
+    <%= f.number_field :salescommission %>
+  </div>
+  <div class="actions">
+    <%= f.submit  "Save changes", class: "btn btn-large btn-primary"%>
+  </div>
+<% end %>

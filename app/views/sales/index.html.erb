@@ -1,0 +1,33 @@
+<h1>Listing sales</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sales ID</th>
+      <th>Sales Person Name</th>
+      <th>Parent Company</th>
+      <th>Commission</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.salesid %></td>
+        <td><%= sale.spname %></td>
+        <td><%= sale.spcompany %></td>
+        <td><%= sale.spcomm %></td>
+        <td><%= link_to 'Show', sale %></td>
+        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
+        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sale', new_sale_path %>

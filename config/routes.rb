@@ -1,6 +1,10 @@
-SampleApp::Application.routes.draw do
+SampleApp::Application.routes.draw do  resources :cities
+
   resources :customers
   resources :users
+  resources :sales
+  resources :salestransactions
+
   resources :sessions, only: [:new, :create, :destroy]  
 
   root  'static_pages#home'

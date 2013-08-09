@@ -1,109 +1,117 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Rstid:</strong>
-  <%= @customer.rstid %>
-</p>
-
-<p>
-  <strong>Rstname:</strong>
-  <%= @customer.rstname %>
-</p>
-
-<p>
-  <strong>Source:</strong>
-  <%= @customer.source %>
-</p>
-
-<p>
-  <strong>Sdate:</strong>
-  <%= @customer.sdate %>
-</p>
-
-<p>
-  <strong>Trialdays:</strong>
-  <%= @customer.trialdays %>
-</p>
-
-<p>
-  <strong>Plantype:</strong>
-  <%= @customer.plantype %>
-</p>
-
-<p>
-  <strong>Monthlyrate:</strong>
-  <%= @customer.monthlyrate %>
-</p>
-
-<p>
-  <strong>Ipadsold:</strong>
-  <%= @customer.ipadsold %>
-</p>
-
-<p>
-  <strong>Standsold:</strong>
-  <%= @customer.standsold %>
-</p>
-
-<p>
-  <strong>Ipadrate:</strong>
-  <%= @customer.ipadrate %>
-</p>
-
-<p>
-  <strong>Standrate:</strong>
-  <%= @customer.standrate %>
-</p>
-
-<p>
-  <strong>Rstowner:</strong>
-  <%= @customer.rstowner %>
-</p>
-
-<p>
-  <strong>Rstaddress:</strong>
-  <%= @customer.rstaddress %>
-</p>
-
-<p>
-  <strong>Rstcity:</strong>
-  <%= @customer.rstcity %>
-</p>
-
-<p>
-  <strong>Rststate:</strong>
-  <%= @customer.rststate %>
-</p>
-
-<p>
-  <strong>Rstzip:</strong>
-  <%= @customer.rstzip %>
-</p>
-
-<p>
-  <strong>Rstcontact:</strong>
-  <%= @customer.rstcontact %>
-</p>
-
-<p>
-  <strong>Rstmgrcontact:</strong>
-  <%= @customer.rstmgrcontact %>
-</p>
-
-<p>
-  <strong>Rstemail:</strong>
-  <%= @customer.rstemail %>
-</p>
-
-<p>
-  <strong>Paymode:</strong>
-  <%= @customer.paymode %>
-</p>
-
-<p>
-  <strong>Salestax:</strong>
-  <%= @customer.salestax %>
-</p>
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<% provide(:title, @customer.rstname) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @customer.rstname %>
+      </h1>
+      <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Table 37 ID:</strong>
+        <%= @customer.rstid %>
+      </p>
+      <p>
+        <strong>Restaurant Name:</strong>
+        <%= @customer.rstname %>
+      </p>
+      <p>
+        <strong>Sales Person 1:</strong>
+        <%= @customer.source %>
+      </p>
+      <p>
+        <strong>Commission Sales Person 1:</strong>
+        <%= @customer.commission1 %>
+      </p>
+      <p>
+        <strong>Sales Person 2:</strong>
+        <%= @customer.source2 %>
+      </p>
+      <p>
+        <strong>Commission Sales Person 2:</strong>
+        <%= @customer.commission2 %>
+      </p>
+      <p>
+        <strong>Contract Start Date:</strong>
+        <%= @customer.sdate %>
+      </p>
+      <p>
+        <strong>Free Trial:</strong>
+        <%= @customer.trialdays %>
+      </p>
+      <p>
+        <strong>Plan Type:</strong>
+        <%= @customer.plantype %>
+      </p>
+      <p>
+        <strong>Plan Pricing:</strong>
+        <%= @customer.monthlyrate %>
+      </p>
+      <p>
+        <strong>Payment Frequency:</strong>
+        <%= @customer.payfreq %>
+      </p>
+      <p>
+        <strong>Payment Mode:</strong>
+        <%= @customer.paymode %>
+      </p>
+      <p>
+        <strong>IPad Included?:</strong>
+        <%= @customer.ipadsold %>
+      </p>
+      <p>
+        <strong>IPad Serial Number:</strong>
+        <%= @customer.ipadserialno %>
+      </p>
+      </p>
+      <p>
+        <strong>IPad Price:</strong>
+        <%= @customer.ipadrate %>
+      </p>
+      <p>
+        <strong>Stand Included?:</strong>
+        <%= @customer.standsold %>
+      <p>
+        <strong>Stand Price:</strong>
+        <%= @customer.standrate %>
+      </p>
+      <p>
+        <strong>Owner Name:</strong>
+        <%= @customer.rstowner %>
+      </p>
+      <p>
+        <strong>Address:</strong>
+        <%= @customer.rstaddress %>
+      </p>
+      <p>
+        <strong>City:</strong>
+        <%= @customer.rstcity %>
+      </p>
+      <p>
+        <strong>State:</strong>
+        <%= @customer.rststate %>
+      </p>
+      <p>
+        <strong>Zip Code:</strong>
+        <%= @customer.rstzip %>
+      </p>
+      <p>
+        <strong>Restaurant Contact:</strong>
+        <%= @customer.rstcontact %>
+      </p>
+      <p>
+        <strong>Manager Contact:</strong>
+        <%= @customer.rstmgrcontact %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @customer.rstemail %>
+      </p>
+      <p>
+        <strong>Sales Tax:</strong>
+        <%= @customer.salestax %>
+      </p>
+      <%= link_to 'Edit', edit_customer_path(@customer) %> |
+      <%= link_to 'Back', customers_path %>
+    </section>
+  </aside>
+</div>

@@ -1,0 +1,34 @@
+<h1>Listing Sales Payment</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Deal Date</th>
+      <th>Restaurant ID</th>
+      <th>Sales Person ID</th>
+      <th>Sale Amount</th>
+      <th>Commission</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @salestransactions.each do |salestransaction| %>
+      <tr>
+        <td><%= salestransaction.sdate %></td>
+        <td><%= salestransaction.table37id %></td>
+        <td><%= salestransaction.salesid %></td>
+        <td><%= salestransaction.salesamount %></td>
+        <td><%= salestransaction.salescommission %></td>
+        <td><%= link_to 'Show', salestransaction %></td>
+        <td><%= link_to 'Edit', edit_salestransaction_path(salestransaction) %></td>
+        <td><%= link_to 'Destroy', salestransaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

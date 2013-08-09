@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130731153359) do
+ActiveRecord::Schema.define(version: 20130808182446) do
+
+  create_table "cities", force: true do |t|
+    t.string   "cityname"
+    t.string   "statename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "customers", force: true do |t|
     t.string   "rstid"
@@ -35,6 +42,39 @@ ActiveRecord::Schema.define(version: 20130731153359) do
     t.string   "rstemail"
     t.string   "paymode"
     t.integer  "salestax"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ipadserialno"
+    t.integer  "payfreq",       default: 30
+    t.string   "salesid1"
+    t.string   "salesid2"
+    t.string   "source2"
+    t.integer  "commission1"
+    t.integer  "commission2"
+  end
+
+  create_table "sales", force: true do |t|
+    t.string   "salesid"
+    t.string   "spname"
+    t.string   "spcompany"
+    t.integer  "spcomm"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "salestransactions", force: true do |t|
+    t.string   "sdate"
+    t.string   "table37id"
+    t.string   "salesid"
+    t.integer  "salesamount"
+    t.integer  "salescommission"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "states", force: true do |t|
+    t.string   "statename"
+    t.string   "countryname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
