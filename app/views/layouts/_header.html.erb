@@ -7,7 +7,7 @@
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
-            <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "Employees", users_path %></li>
 
             <li><%= link_to "Restaurants", customers_path %></li>
 
@@ -16,7 +16,9 @@
                 Sales Force <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Manage Sales Force", sales_path %></li>
+                <li><%= link_to "Manage Sales People", sales_path %></li>
+                <li><%= link_to "Manage Parent Company", parents_path %></li>
+                <li class="divider"></li>
                 <li><%= link_to "View Commission", salestransactions_path %></li>
               </ul>
             </li>

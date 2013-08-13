@@ -6,9 +6,19 @@ class SalestransactionsController < ApplicationController
   # GET /salestransactions
   # GET /salestransactions.json
   def index
-    @salestransactions = Salestransaction.all
-    @sale = Sale.find(:all)
+    date = DateTime.now
 
+    time = Time.new
+    month = time.month
+    year = time.year
+
+    @salestransactions = Salestransaction.find(:all)
+    #Salestransaction.select('salesid, sum(salescommission)')
+    Salestransaction.where('sdate >= ? and sdate <= ?', Time.now.beginning_of_month, Time.now.end_of_month)
+    #Salestransaction.group('salesid')
+
+    #@salestransactions = Salestransaction.all
+    #@sale = Sale.find(params [@salestransactions.salesid])
   end
 
   # GET /salestransactions/1
@@ -63,11 +73,15 @@ class SalestransactionsController < ApplicationController
   # DELETE /salestransactions/1
   # DELETE /salestransactions/1.json
   def destroy
-    @salestransaction.destroy
-    respond_to do |format|
-      format.html { redirect_to salestransactions_url }
-      format.json { head :no_content }
-    end
+    Salestransaction.find(params[:id]).destroy
+    flash[:success] = "Sales transaction destroyed."
+    redirect_to salestransactions_url
+
+    #@salestransaction.destroy
+    #respond_to do |format|
+    #  format.html { redirect_to salestransactions_url }
+    #  format.json { head :no_content }
+    #end
   end
 
   private
@@ -78,7 +92,7 @@ class SalestransactionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def salestransaction_params
-    params.require(:salestransaction).permit(:sdate, :table37id, :salesid, :salesamount, :salescommission)
+    params.require(:salestransaction).permit(:sdate, :table37id, :salesid, :salesamount, :salescommission, :relationship, :parentcompany)
   end
 
   def signed_in_user
@@ -90,6 +104,6 @@ class SalestransactionsController < ApplicationController
 
   def admin_user
     flash[:success] = "Only ADMIN can perform this action!"
-    redirect_to(salestrasactions_path) unless current_user.admin?
+    redirect_to(salestransactions_path) unless current_user.admin?
   end
 end

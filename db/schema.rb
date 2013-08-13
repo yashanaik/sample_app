@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808182446) do
+ActiveRecord::Schema.define(version: 20130813183354) do
 
   create_table "cities", force: true do |t|
     t.string   "cityname"
@@ -51,6 +51,13 @@ ActiveRecord::Schema.define(version: 20130808182446) do
     t.string   "source2"
     t.integer  "commission1"
     t.integer  "commission2"
+    t.string   "table37rep"
+  end
+
+  create_table "parents", force: true do |t|
+    t.string   "parentname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sales", force: true do |t|
@@ -60,6 +67,7 @@ ActiveRecord::Schema.define(version: 20130808182446) do
     t.integer  "spcomm"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parentcomm"
   end
 
   create_table "salestransactions", force: true do |t|
@@ -70,6 +78,8 @@ ActiveRecord::Schema.define(version: 20130808182446) do
     t.integer  "salescommission"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "relationship"
+    t.string   "parentcompany"
   end
 
   create_table "states", force: true do |t|

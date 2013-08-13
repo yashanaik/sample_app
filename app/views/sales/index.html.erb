@@ -1,11 +1,13 @@
-<h1>Listing sales</h1>
+
+
+<h1>Listing sales people</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Sales ID</th>
-      <th>Sales Person Name</th>
       <th>Parent Company</th>
+      <th>Parent Commission</th>
+      <th>Sales Person Name</th>
       <th>Commission</th>
       <th></th>
       <th></th>
@@ -16,9 +18,9 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.salesid %></td>
-        <td><%= sale.spname %></td>
         <td><%= sale.spcompany %></td>
+        <td><%= sale.parentcomm %></td>
+        <td><%= sale.spname %></td>
         <td><%= sale.spcomm %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
@@ -30,4 +32,6 @@
 
 <br>
 
-<%= link_to 'New Sale', new_sale_path %>
+<%= link_to 'Add New Sale Person', new_sale_path %>
+<br>
+<%= link_to 'Add Parent Company', new_parent_path %>

@@ -1,6 +1,3 @@
-<div class="row">
-
-
 <%= form_for(@customer) do |f| %>
 <% if @customer.errors.any? %>
 <div id="error_explanation">
@@ -13,84 +10,108 @@
 </div>
 <% end %>
 
-    <%= f.label :rstid, 'Table37 ID*' %>
-    <%= f.text_field :rstid %>
-    
-    <%= f.label :rstname, 'Restaurant Name*' %>
-    <%= f.text_field :rstname %>
-    
+
+  <div class="span6 offset3"> 
+  <%= f.label :rstname, 'Restaurant Name*' %>
+  <%= f.text_field :rstname %>
+
+  <%= f.label :rstid, 'Table37 ID*', :readonly => true %>
+  <%= f.text_field :rstid %>
+  
+  <div class="styled-select">
     <%= f.label :source, 'Sales Person 1*' %>
-    <%= f.collection_select :source, Sale.find(:all), :id, :spname, :prompt => "Please select" %>  
+    <%= f.collection_select :source, Sale.find(:all), :id, :spname, :prompt => "Please select" %> 
+  </div>
 
+  <%= f.label :commission1, 'Commission Sales Person 1*' %>
+  <%= f.number_field :commission1 %> 
+
+  <div class="styled-select">
     <%= f.label :source2, 'Sales Person 2*' %>
-    <%= f.collection_select :source2, Sale.find(:all), :id, :spname, :prompt => "Please select" %>  
+    <%= f.collection_select :source2, Sale.find(:all), :id, :spname, :prompt => "Please select" %>
+  </div>
 
-    <%= f.label :commission1, 'Commission Sales Person 1*' %>
-    <%= f.number_field :commission1 %> 
+  <%= f.label :commission2, 'Commission Sales Person 2' %>
+  <%= f.number_field :commission2 %>  
 
-    <%= f.label :commission2, 'Commission Sales Person 2' %>
-    <%= f.number_field :commission2 %>   
-       
-    <%= f.label :sdate, 'Contract Start Date (DD/MM/YYYY)' %>
-    <%= f.text_field :sdate %>
-    
-    <%= f.label :trialdays, 'Free Trial (in Days)' %>
-    <%= f.number_field :trialdays %>
-   
+    <div class="styled-select">
+    <%= f.label :table37rep, 'Table37 Representative' %>
+    <%= f.collection_select :table37rep, User.find(:all), :name, :name, :prompt => "Please select" %> 
+  </div>
+
+  <%= f.label :sdate, 'Contract Start Date (DD/MM/YYYY)' %>
+  <%= f.text_field :sdate %>
+
+  <%= f.label :trialdays, 'Free Trial (in Days)' %>
+  <%= f.number_field :trialdays %>
+
+  <div class="styled-select">
     <%= f.label :plantype, 'Plan Type' %>
     <%= f.select :plantype, options_for_select(["Free", "Free Plus", "Waitlist", "Reservation", "Waitlist + Reservation","Full"]) , :prompt => "Please select"%>
-   
-    <%= f.label :monthlyrate, 'Plan Pricing' %>
-    <%= f.number_field :monthlyrate %>
+  </div>
 
+  <%= f.label :monthlyrate, 'Plan Pricing' %>
+  <%= f.number_field :monthlyrate %>
+
+  <div class="styled-select">
     <%= f.label :payfreq, 'Payment Frequency' %>
-    <%= f.number_field :payfreq %>
+    <%= f.select :payfreq, options_for_select([["Monthly", 30], ["Quarterly", 90], ["Half Yearly", 180], ["Yearly", 365]]), 
+    :prompt => "Please Select" %>
+  </div>
 
+  <div class="styled-select">
     <%= f.label :paymode, 'Payment Mode' %>
     <%= f.select :paymode, options_for_select(["PayPal","Check"]), :prompt => "Please select" %>
+  </div>
 
+  <div class="squaredFour">
     <%= f.label :ipadsold, 'IPad Included?' %>
     <%= f.check_box :ipadsold %>
-
-    <%= f.label :ipadserialno, 'IPad Serial Number' %>
-    <%= f.text_field :ipadserialno %>
-    
-    <%= f.label :ipadrate, 'IPad Price' %>
-    <%= f.number_field :ipadrate %>
-    
-    <%= f.label :standsold, 'Stand Included?' %>
-    <%= f.check_box :standsold %>
-    
-    <%= f.label :standrate, 'Stand Price' %>
-    <%= f.number_field :standrate %>
-    
-    <%= f.label :rstowner, 'Owner Name' %>
-    <%= f.text_field :rstowner %>
-    
-    <%= f.label :rstaddress, 'Address' %>
-    <%= f.text_field :rstaddress %>
-    
-    <%= f.label :rstcity, 'City' %>
-    <%= f.collection_select :rstcity, City.find(:all), :id, :cityname, :prompt => "Please select" %>  
-    
-    <%= f.label :rststate, 'State' %>
-    <%= f.collection_select :rststate, State.find(:all), :id, :statename, :prompt => "Please select" %> 
-
-    <%= f.label :rstzip, 'Zip Code' %>
-    <%= f.text_field :rstzip %>
-   
-    <%= f.label :rstcontact, 'Restaurant Contact' %>
-    <%= f.number_field :rstcontact %>
-    
-    <%= f.label :rstmgrcontact, 'Manager Contact' %>
-    <%= f.number_field :rstmgrcontact %>
-    
-    <%= f.label :rstemail,'Email' %>
-    <%= f.text_field :rstemail %>
-    
-    <%= f.label :salestax, 'Sales Tax' %>
-    <%= f.number_field :salestax %>
-
-    <%= f.submit  "Save changes", class: "btn btn-large btn-primary"%>
-    <% end %>
   </div>
+
+  <%= f.label :ipadserialno, 'IPad Serial Number' %>
+  <%= f.text_field :ipadserialno %>
+
+  <%= f.label :ipadrate, 'IPad Price' %>
+  <%= f.number_field :ipadrate %>
+
+  <%= f.label :standsold, 'Stand Included?' %>
+  <%= f.check_box :standsold %>
+
+  <%= f.label :standrate, 'Stand Price' %>
+  <%= f.number_field :standrate %>
+
+  <%= f.label :rstowner, 'Owner Name' %>
+  <%= f.text_field :rstowner %>
+
+  <%= f.label :rstaddress, 'Address' %>
+  <%= f.text_field :rstaddress %>
+
+  <div class="styled-select">
+    <%= f.label :rstcity, 'City' %>
+    <%= f.collection_select :rstcity, City.find(:all), :cityname, :cityname, :prompt => "Please select" %>  
+  </div>
+
+  <div class="styled-select">
+    <%= f.label :rststate, 'State' %>
+    <%= f.collection_select :rststate, State.find(:all), :statename, :statename, :prompt => "Please select" %> 
+  </div>
+
+  <%= f.label :rstzip, 'Zip Code' %>
+  <%= f.text_field :rstzip %>
+
+  <%= f.label :rstcontact, 'Restaurant Contact' %>
+  <%= f.number_field :rstcontact %>
+
+  <%= f.label :rstmgrcontact, 'Manager Contact' %>
+  <%= f.number_field :rstmgrcontact %>
+
+  <%= f.label :rstemail,'Email' %>
+  <%= f.text_field :rstemail %>
+
+  <%= f.label :salestax, 'Sales Tax' %>
+  <%= f.number_field :salestax %>
+
+  <%= f.submit  "Save changes", class: "btn btn-large btn-primary"%>
+  <% end %>
+</div>

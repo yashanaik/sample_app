@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <aside class="span4">
+  	<section>
+<p>
+  <strong>Parent Company Name:</strong>
+  <%= @parent.parentname %>
+</p>
+
+<%= link_to 'Edit', edit_parent_path(@parent) %> |
+<%= link_to 'Back', parents_path %>
+
+    </section>
+  </aside>
+</div>

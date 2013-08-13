@@ -1,33 +1,31 @@
 <div class="row">
-
-
-<%= form_for(@sale) do |f| %>
+  <%= form_for(@sale) do |f| %>
   <% if @sale.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
-
-      <ul>
+  <div id="error_explanation">
+    <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+    <ul>
       <% @sale.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
+  <div class="styled-select">
+    <%= f.label :spcompany, 'Parent Company' %>
+    <%= f.collection_select :spcompany, Parent.find(:all), :parentname, :parentname, :prompt => "Please select" %> 
+  </div>
 
-    <%= f.label :salesid, "Sales ID"%>
-    <%= f.text_field :salesid %>
+  <%= f.label :parentcomm, "Parent Company Commission" %>
+  <%= f.number_field :parentcomm %>
 
-    <%= f.label :spname, "Sales Person Name" %>
-    <%= f.text_field :spname %>
+  <%= f.label :spname, "Sales Person Name" %>
+  <%= f.text_field :spname %>
 
-    <%= f.label :spcompany, "Parent Company" %>
-    <%= f.text_field :spcompany %>
+  <%= f.label :spcomm, "Commission" %>
+  <%= f.number_field :spcomm %>
 
-    <%= f.label :spcomm, "Commission" %>
-    <%= f.number_field :spcomm %>
-
-    <%= f.submit  "Save changes", class: "btn btn-large btn-primary"%>
-<% end %>
+  <%= f.submit  "Save changes", class: "btn btn-large btn-primary"%>
+  <% end %>
 
 </div>
