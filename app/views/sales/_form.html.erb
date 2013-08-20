@@ -10,14 +10,15 @@
     </ul>
   </div>
   <% end %>
+</div>
+<form class="form-horizontal">
+<fieldset>
+<div class="span6"> 
 
   <div class="styled-select">
     <%= f.label :spcompany, 'Parent Company' %>
-    <%= f.collection_select :spcompany, Parent.find(:all), :parentname, :parentname, :prompt => "Please select" %> 
+    <%= f.collection_select :spcompany, Parent.find(:all), :id, :parentname, :prompt => "Please select" %> 
   </div>
-
-  <%= f.label :parentcomm, "Parent Company Commission" %>
-  <%= f.number_field :parentcomm %>
 
   <%= f.label :spname, "Sales Person Name" %>
   <%= f.text_field :spname %>
@@ -29,3 +30,5 @@
   <% end %>
 
 </div>
+</fieldset>
+</form>

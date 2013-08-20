@@ -6,7 +6,7 @@ class ParentsController < ApplicationController
   # GET /parents
   # GET /parents.json
   def index
-    @parents = Parent.all
+    @parents = Parent.paginate(page: params[:page])
   end
 
   # GET /parents/1
@@ -56,11 +56,9 @@ class ParentsController < ApplicationController
   # DELETE /parents/1
   # DELETE /parents/1.json
   def destroy
-    @parent.destroy
-    respond_to do |format|
-      format.html { redirect_to parents_url }
-      format.json { head :no_content }
-    end
+    Parent.find(params[:id]).destroy
+    flash[:success] = "Parent Company information destroyed."
+    redirect_to parents_url
   end
 
   private
@@ -71,7 +69,7 @@ class ParentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def parent_params
-    params.require(:parent).permit(:parentname)
+    params.require(:parent).permit(:parentname, :partentcomm)
   end
 
   def signed_in_user

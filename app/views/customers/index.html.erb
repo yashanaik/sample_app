@@ -1,13 +1,12 @@
 <% provide(:title, 'Listing customers') %>
 <h1>Listing customers</h1>
 <div class="centered">
-<table>
+  <%= will_paginate %>
+<table class=table table-striped>
   <thead>
     <tr>
       <th>Table 37 ID</th>
       <th>Restaurant Name</th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -17,15 +16,14 @@
       <tr>
         <td><%= customer.rstid %></td>
         <td><%= customer.rstname %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', customer %> | <%= link_to 'Edit', edit_customer_path(customer) %> | <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
 <br>
-
+<%= will_paginate %>
+<br>
 <%= link_to 'New Customer', new_customer_path %>
 

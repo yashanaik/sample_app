@@ -6,7 +6,8 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all
+    @sales = Sale.paginate(page: params[:page])
+    @parents = Parent.all
   end
 
   # GET /sales/1
@@ -28,29 +29,34 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(sale_params)
 
-    respond_to do |format|
-      if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @sale }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
+    if @sale.save
+
+      @parent = Parent.find(@sale.spcompany)
+      @parentcomm = @parent.partentcomm
+      @sale.update(:parentcomm => @parentcomm )
+
+      flash[:success] = "Sales person information was successfully created"
+      redirect_to @sale
+    else
+      render 'new'
     end
   end
 
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
-    respond_to do |format|
-      if @sale.update(sale_params)
-        format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
+    if @sale.update(sale_params)
+
+      @parent = Parent.find(@sale.spcompany)
+      @parentcomm = @parent.partentcomm
+      @sale.update(:parentcomm => @parentcomm )
+
+      flash[:success] = "Sale person record was successfully updated"
+      redirect_to @sale
+    else
+      render 'edit'
     end
+
   end
 
   # DELETE /sales/1
@@ -76,7 +82,7 @@ class SalesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def sale_params
-    params.require(:sale).permit(:salesid, :spname, :spcompany, :spcomm)
+    params.require(:sale).permit(:spname, :spcompany, :spcomm, :parentcomm)
   end
 
   def signed_in_user

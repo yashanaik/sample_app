@@ -1,15 +1,17 @@
 <h1>Listing Sales Payment</h1>
+<%= will_paginate %>
 <div class="centered">
-<table>
+<table class=table table-striped >
   <thead>
     <tr>
       <th>Deal Date</th>
-      <th>Restaurant ID</th>
-      <th>Sales Person ID</th>
+      <th>Parent Company</th>
+      <th>Sales Person</th>
+      <th>Restaurant</th>     
       <th>Sale Amount</th>
       <th>Commission</th>
-      <th></th>
-      <th></th>
+      <th>P-Parent / S-Sales</th>
+      <th>First Billing</th>
       <th></th>
     </tr>
   </thead>
@@ -17,18 +19,35 @@
   <tbody>
     <% @salestransactions.each do |salestransaction| %>
       <tr>
-        <td><%= salestransaction.sdate %></td>
+        <td><%= salestransaction.sdate.strftime("%Y-%m-%d") %></td>
+        
+        <td>
+          <% @parents.each do |parent| %>
+          <% if salestransaction.parentcompany == parent.id %>
+            <%= parent.parentname %> 
+          <% end %>
+          <% end %>
+        </td>
+
+        <td>
+          <% @sales.each do |sale| %>
+          <% if salestransaction.salesid == sale.id %>
+            <%= sale.spname %>
+          <% end %>
+          <% end %>
+        </td>
+
         <td><%= link_to salestransaction.table37id, customer_path(salestransaction.table37id), :target => "_blank" %></td>
-        <td><%= link_to salestransaction.salesid, sale_path(salestransaction.salesid), :target => "_blank" %></td>
         <td><%= salestransaction.salesamount %></td>
         <td><%= salestransaction.salescommission %></td>
-        <td><%= link_to 'Show', salestransaction %></td>
-        <td><%= link_to 'Edit', edit_salestransaction_path(salestransaction) %></td>
-        <td><%= link_to 'Destroy', salestransaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= salestransaction.relationship %></td>
+        <td><%= salestransaction.commsdate.strftime("%B") %></td>
+        <td><%= link_to 'Show', salestransaction %> | <%= link_to 'Edit', edit_salestransaction_path(salestransaction) %> | <%= link_to 'Destroy', salestransaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
 <br>
-
+<%= will_paginate %>
+      

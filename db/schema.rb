@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130813183354) do
+ActiveRecord::Schema.define(version: 20130818214643) do
 
   create_table "cities", force: true do |t|
     t.string   "cityname"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20130813183354) do
     t.string   "rstid"
     t.string   "rstname"
     t.string   "source"
-    t.string   "sdate"
+    t.datetime "sdate",         limit: 255
     t.integer  "trialdays"
     t.string   "plantype"
     t.integer  "monthlyrate"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20130813183354) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ipadserialno"
-    t.integer  "payfreq",       default: 30
+    t.integer  "payfreq",                   default: 30
     t.string   "salesid1"
     t.string   "salesid2"
     t.string   "source2"
@@ -58,12 +58,12 @@ ActiveRecord::Schema.define(version: 20130813183354) do
     t.string   "parentname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "partentcomm"
   end
 
   create_table "sales", force: true do |t|
-    t.string   "salesid"
     t.string   "spname"
-    t.string   "spcompany"
+    t.integer  "spcompany",  limit: 255
     t.integer  "spcomm"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -71,15 +71,16 @@ ActiveRecord::Schema.define(version: 20130813183354) do
   end
 
   create_table "salestransactions", force: true do |t|
-    t.string   "sdate"
+    t.datetime "sdate",           limit: 255
     t.string   "table37id"
-    t.string   "salesid"
+    t.integer  "salesid",         limit: 255
     t.integer  "salesamount"
     t.integer  "salescommission"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "relationship"
-    t.string   "parentcompany"
+    t.integer  "parentcompany",   limit: 255
+    t.datetime "commsdate",       limit: 255
   end
 
   create_table "states", force: true do |t|

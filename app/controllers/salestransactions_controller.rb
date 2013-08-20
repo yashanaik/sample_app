@@ -6,19 +6,16 @@ class SalestransactionsController < ApplicationController
   # GET /salestransactions
   # GET /salestransactions.json
   def index
-    date = DateTime.now
-
-    time = Time.new
-    month = time.month
-    year = time.year
-
-    @salestransactions = Salestransaction.find(:all)
-    #Salestransaction.select('salesid, sum(salescommission)')
-    Salestransaction.where('sdate >= ? and sdate <= ?', Time.now.beginning_of_month, Time.now.end_of_month)
-    #Salestransaction.group('salesid')
-
+    @salestransactions = Salestransaction.paginate(page: params[:page])
     #@salestransactions = Salestransaction.all
-    #@sale = Sale.find(params [@salestransactions.salesid])
+    #Salestransaction.where('sdate >= ? and sdate <= ?', Time.now.beginning_of_month, Time.now.end_of_month)
+
+    #@salestransactions= Salestransaction.paginate(page: params[:page],
+    # :select => "salestransactions.salesid as salesid2, (salestransactions.sdate) as sdate2, salestransactions.relationship as relationship2, SUM(salestransactions.salescommission) as salescommission2", 
+    # :group => "(salestransactions.sdate), salestransactions.relationship, salestransactions.salesid")
+
+    @parents = Parent.all
+    @sales = Sale.all
   end
 
   # GET /salestransactions/1
@@ -92,7 +89,7 @@ class SalestransactionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def salestransaction_params
-    params.require(:salestransaction).permit(:sdate, :table37id, :salesid, :salesamount, :salescommission, :relationship, :parentcompany)
+    params.require(:salestransaction).permit(:sdate, :table37id, :salesid, :salesamount, :salescommission, :relationship, :parentcompany, :commsdate)
   end
 
   def signed_in_user

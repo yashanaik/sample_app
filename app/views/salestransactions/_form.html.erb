@@ -11,27 +11,33 @@
     </div>
   <% end %>
 
+<form class="form-horizontal">
+<fieldset>
+<div class="span6"> 
   <div class="field">
-    <%= f.label :sdate, "Deal Date" %><br>
+    <%= f.label :sdate, "Deal Date" %>
     <%= f.text_field :sdate %>
   </div>
   <div class="field">
-    <%= f.label :table37id, "Restaurant ID" %><br>
+    <%= f.label :table37id, "Restaurant ID" %>
     <%= f.text_field :table37id %>
   </div>
   <div class="field">
-    <%= f.label :salesid, "Sales Person ID" %><br>
+    <%= f.label :salesid, "Sales Person ID" %>
     <%= f.text_field :salesid %>
   </div>
   <div class="field">
-    <%= f.label :salesamount, "Sale Amount" %><br>
+    <%= f.label :salesamount, "Sale Amount" %>
     <%= f.number_field :salesamount %>
   </div>
   <div class="field">
-    <%= f.label :salescommission, "Commission" %><br>
+    <%= f.label :salescommission, "Commission" %>
     <%= f.number_field :salescommission %>
   </div>
   <div class="actions">
-    <%= f.submit  "Save changes", class: "btn btn-large btn-primary"%>
+    <%= f.submit  "Save changes", class: "btn btn-small btn-success"%>
   </div>
 <% end %>
+</div>
+</fieldset>
+</form>

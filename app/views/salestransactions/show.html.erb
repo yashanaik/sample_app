@@ -28,6 +28,16 @@
   <%= @salestransaction.salescommission %>
 </p>
 
+<p>
+  <strong>Relationship:</strong>
+  <%= @salestransaction.relationship %>
+</p>
+
+<p>
+  <strong>Commission Start Date:</strong>
+  <%= @salestransaction.commsdate %>
+</p>
+
 <%= link_to 'Edit', edit_salestransaction_path(@salestransaction) %> |
 <%= link_to 'Back', salestransactions_path %>
 

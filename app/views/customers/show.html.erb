@@ -117,8 +117,8 @@
         <strong>Sales Tax:</strong>
         <%= @customer.salestax %>
       </p>
-      <%= link_to 'Edit', edit_customer_path(@customer) %> |
-      <%= link_to 'Back', customers_path %>
+      <%= link_to 'Edit', edit_customer_path(@customer), class: "btn btn-small btn-warning" %> |
+      <%= link_to 'Back', customers_path, class: "btn btn-small btn-warning" %>
     </section>
   </aside>
 </div>

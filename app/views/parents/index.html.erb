@@ -1,11 +1,11 @@
 <h1>Listing Parent Companies</h1>
 <div class="centered">
-<table>
+  <%= will_paginate %>
+<table class=table table-striped>
   <thead>
     <tr>
       <th>Parent Name</th>
-      <th></th>
-      <th></th>
+      <th>Parent Commission</th>
       <th></th>
     </tr>
   </thead>
@@ -14,14 +14,15 @@
     <% @parents.each do |parent| %>
       <tr>
         <td><%= parent.parentname %></td>
-        <td><%= link_to 'Show', parent %></td>
-        <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
-        <td><%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= parent.partentcomm %></td>
+        <td><%= link_to 'Show', parent %> | <%= link_to 'Edit', edit_parent_path(parent) %> | <%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
 <br>
+<%= will_paginate %>
 
 <%= link_to 'New Parent', new_parent_path %>
+
